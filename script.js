@@ -1346,19 +1346,11 @@ mediaFilter.addEventListener("change", () => {
 });
 
 topMoviesBtn.addEventListener("click", () => {
-  mediaFilter.value = "movie";
-  sortFilter.value = "top_rated";
-  populateGenreFilter();
-  scrollToResults();
-  loadBrowseResults("top_rated");
+  window.location.href = "charts.html?type=movie";
 });
 
 topSeriesBtn.addEventListener("click", () => {
-  mediaFilter.value = "tv";
-  sortFilter.value = "top_rated";
-  populateGenreFilter();
-  scrollToResults();
-  loadBrowseResults("top_rated");
+  window.location.href = "charts.html?type=tv";
 });
 
 topTenPrevBtn?.addEventListener("click", () => {

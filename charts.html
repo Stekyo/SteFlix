@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SteFlix Charts</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a href="index.html" class="logo-wrap">
+      <span class="logo-mark" aria-hidden="true">
+        <video id="logoLoopVideo" class="logo-video" src="assets/logo-loop.mp4" muted playsinline preload="auto"></video>
+      </span>
+      <span class="logo">SteFlix</span>
+    </a>
+    <nav>
+      <a href="index.html#discover">Entdecken</a>
+      <a href="index.html#resultsSection">Ergebnisse</a>
+      <a href="ranking.html">Mein Ranking</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="studio-section">
+      <div class="studio-banner">
+        <p class="hero-kicker">SteFlix Charts</p>
+        <h2 id="chartsHeroTitle">Die besten Filme bei SteFlix</h2>
+        <p id="chartsHeroCopy" class="section-copy">
+          Entdecke die aktuell staerksten Filme und Serien als eigene Top-Liste mit direktem Zugriff auf Trailer und Details.
+        </p>
+        <div class="quick-actions chart-switch">
+          <button id="showMoviesBtn" type="button">Top Filme</button>
+          <button id="showSeriesBtn" type="button">Top Serien</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-head compact">
+        <div>
+          <p class="section-kicker">Charts</p>
+          <h2 id="chartsHeading">Top Filme</h2>
+        </div>
+        <p id="chartsDescription" class="section-copy">
+          Die Liste zeigt die bestbewerteten Filme mit genug Stimmen, damit die Auswahl nicht zufaellig wirkt.
+        </p>
+      </div>
+      <section id="chartsGrid" class="results top-chart-grid"></section>
+      <div class="chart-pagination">
+        <button id="chartsPrevBtn" type="button">Zurueck</button>
+        <p id="chartsPageInfo" class="chart-page-info">Seite 1 / 5</p>
+        <button id="chartsNextBtn" type="button">Weiter</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="infoModal" class="modal" hidden>
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-content">
+      <button id="modalClose" class="modal-close" type="button">Schliessen</button>
+      <div class="modal-hero" id="modalHero">
+        <div class="modal-hero-overlay"></div>
+        <div class="modal-hero-content">
+          <img id="modalPoster" class="modal-poster" alt="Poster" />
+          <div class="modal-copy">
+            <p id="modalEyebrow" class="modal-eyebrow"></p>
+            <h2 id="modalTitle"></h2>
+            <div id="modalMeta" class="modal-meta"></div>
+            <p id="modalOverview" class="modal-overview"></p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-sections">
+        <section class="modal-panel">
+          <h3>Trailer</h3>
+          <div id="modalTrailer"></div>
+        </section>
+        <section class="modal-panel">
+          <h3>Bilder</h3>
+          <div id="modalGallery" class="modal-gallery"></div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script src="charts-page.js"></script>
+</body>
+</html>
