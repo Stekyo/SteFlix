@@ -1351,16 +1351,30 @@ select:focus {
 
 @media (max-width: 1100px) {
   .topbar {
-    grid-template-columns: 1fr;
-    align-items: stretch;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas:
+      "brand nav"
+      "search search";
+    align-items: center;
+    gap: 0.85rem 1rem;
+  }
+
+  .logo-wrap {
+    grid-area: brand;
   }
 
   .topbar-search {
-    order: 3;
+    grid-area: search;
+    order: initial;
+    width: min(100%, 760px);
+    justify-self: center;
   }
 
   nav {
-    justify-content: space-between;
+    grid-area: nav;
+    justify-content: flex-end;
+    justify-self: end;
+    width: auto;
   }
 
   .hero {
@@ -1461,31 +1475,32 @@ select:focus {
 
 @media (max-width: 700px) {
   .topbar {
-    gap: 0.7rem;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.65rem 0.8rem;
   }
 
   .topbar-search {
-    width: 100%;
+    width: min(100%, 34rem);
+    justify-self: center;
   }
 
   nav {
-    gap: 0.5rem;
-    overflow-x: auto;
-    padding-bottom: 0.15rem;
-    scrollbar-width: none;
-    justify-content: flex-start;
-  }
-
-  nav::-webkit-scrollbar {
-    display: none;
+    gap: 0.4rem;
+    overflow: visible;
+    padding-bottom: 0;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    row-gap: 0.35rem;
+    max-width: 100%;
   }
 
   nav a {
     white-space: nowrap;
-    padding: 0.55rem 0.75rem;
+    padding: 0.48rem 0.62rem;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(185, 216, 255, 0.08);
+    font-size: 0.86rem;
   }
 
   .preview-panel {
@@ -1665,6 +1680,16 @@ select:focus {
 
   .topbar {
     padding: 0.8rem 0.75rem;
+    gap: 0.6rem 0.75rem;
+  }
+
+  nav {
+    gap: 0.35rem;
+  }
+
+  nav a {
+    padding: 0.42rem 0.56rem;
+    font-size: 0.8rem;
   }
 
   .logo-mark {
@@ -1690,6 +1715,10 @@ select:focus {
   .search-panel {
     padding: 0.45rem;
     border-radius: 18px;
+  }
+
+  .topbar-search {
+    width: min(100%, 100%);
   }
 
   .preview-slide,
