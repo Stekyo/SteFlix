@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="topbar">
+  <header class="topbar topbar-discover">
     <a href="index.html" class="logo-wrap">
       <span class="logo-mark" aria-hidden="true">
         <video id="logoLoopVideo" class="logo-video" src="assets/logo-loop.mp4" muted playsinline preload="auto"></video>
@@ -79,9 +79,9 @@
             <label class="field">
               <span>Sortierung</span>
               <select id="sortFilter">
+                <option value="top_rated" selected>Top Rated</option>
                 <option value="trending">Trending</option>
                 <option value="popular">Popular</option>
-                <option value="top_rated">Top Rated</option>
                 <option value="release_desc">Neueste</option>
                 <option value="title_asc">Titel A-Z</option>
               </select>

@@ -125,7 +125,7 @@ function hasActiveFilters() {
     Boolean(yearFilter.value) ||
     Number(ratingFilter.value) > 0 ||
     Boolean(seriesStatusFilter.value) ||
-    sortFilter.value !== "trending"
+    sortFilter.value !== "top_rated"
   );
 }
 
@@ -1301,7 +1301,7 @@ function debounceSearch() {
   clearTimeout(searchTimeout);
   searchTimeout = setTimeout(() => {
     if (searchInput.value.trim().length >= 3) {
-      loadSearchResults();
+      navigateToSearchPage();
       return;
     }
 
@@ -1309,12 +1309,67 @@ function debounceSearch() {
   }, 250);
 }
 
+function buildSearchPageUrl() {
+  const params = new URLSearchParams();
+  const query = searchInput.value.trim();
+
+  if (query) {
+    params.set("q", query);
+  }
+
+  if (mediaFilter.value !== "all") {
+    params.set("media", mediaFilter.value);
+  }
+
+  if (genreFilter.value) {
+    params.set("genre", genreFilter.value);
+  }
+
+  if (yearFilter.value) {
+    params.set("year", yearFilter.value);
+  }
+
+  if (Number(ratingFilter.value) > 0) {
+    params.set("rating", ratingFilter.value);
+  }
+
+  if (sortFilter.value !== "top_rated") {
+    params.set("sort", sortFilter.value);
+  }
+
+  if (seriesStatusFilter.value) {
+    params.set("status", seriesStatusFilter.value);
+  }
+
+  const queryString = params.toString();
+  return `search.html${queryString ? `?${queryString}` : ""}`;
+}
+
+function navigateToSearchPage(force = false) {
+  const query = searchInput.value.trim();
+
+  if (!query || (!force && query.length < 3)) {
+    return false;
+  }
+
+  window.location.href = buildSearchPageUrl();
+  return true;
+}
+
 searchBtn.addEventListener("click", () => {
+  if (navigateToSearchPage(true)) {
+    return;
+  }
+
   refreshResults();
 });
 
 searchInput.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
+    if (navigateToSearchPage(true)) {
+      return;
+    }
+
     refreshResults();
   }
 });

@@ -69,6 +69,49 @@ body::after {
   border-bottom: 1px solid rgba(185, 216, 255, 0.08);
 }
 
+@media (min-width: 1101px) {
+  .topbar.topbar-discover {
+    grid-template-columns: auto minmax(27rem, 45rem) auto;
+    align-items: center;
+    gap: 1.1rem;
+  }
+
+  .topbar.topbar-discover .logo-wrap {
+    align-self: center;
+  }
+
+  .topbar.topbar-discover .topbar-search {
+    width: 100%;
+    justify-self: center;
+  }
+
+  .topbar.topbar-discover nav {
+    justify-self: end;
+    justify-content: flex-end;
+    gap: 0.9rem;
+    align-self: center;
+  }
+
+  .topbar.topbar-discover .search-panel {
+    width: 100%;
+    padding: 0.48rem;
+    border-radius: 24px;
+  }
+
+  .topbar.topbar-discover .search-row {
+    gap: 0.55rem;
+    align-items: center;
+  }
+
+  .topbar.topbar-discover .search-panel button {
+    padding: 0.8rem 1.05rem;
+  }
+
+  .topbar.topbar-discover .filter-toggle {
+    padding-inline: 0.85rem;
+  }
+}
+
 .logo-wrap {
   display: inline-flex;
   align-items: center;
@@ -761,6 +804,15 @@ button:hover {
   line-height: 1.6;
 }
 
+.search-status {
+  margin-top: 1rem;
+  padding: 0.95rem 1.05rem;
+  border-radius: 18px;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(185, 216, 255, 0.08);
+}
+
 .compact {
   align-items: center;
 }
@@ -1009,8 +1061,10 @@ select:focus {
   flex-wrap: wrap;
 }
 
-.chart-pagination button {
-  min-width: 8.4rem;
+.chart-page-buttons {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .chart-pagination button:disabled {
@@ -1025,6 +1079,22 @@ select:focus {
   margin: 0;
   color: var(--muted);
   font-weight: 700;
+}
+
+.chart-page-arrow,
+.chart-page-number {
+  min-width: 2.9rem;
+  padding: 0.75rem 0.95rem;
+}
+
+.chart-page-arrow {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.chart-page-number.is-active {
+  background: linear-gradient(135deg, #2d6fff, #59a7ff);
+  box-shadow: 0 18px 36px rgba(45, 111, 255, 0.28);
 }
 
 .poster {

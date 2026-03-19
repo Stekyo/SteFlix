@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SteFlix Suche</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar topbar-discover">
+    <a href="index.html" class="logo-wrap">
+      <span class="logo-mark" aria-hidden="true">
+        <video id="logoLoopVideo" class="logo-video" src="assets/logo-loop.mp4" muted playsinline preload="auto"></video>
+      </span>
+      <span class="logo">SteFlix</span>
+    </a>
+    <div class="topbar-search" id="discover">
+      <section class="panel search-panel">
+        <div class="search-row">
+          <input id="searchInput" placeholder="Nach Titel suchen..." />
+          <button id="searchBtn" type="button">Suchen</button>
+          <button
+            id="filterToggleBtn"
+            class="filter-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="filtersPanel"
+            aria-label="Filter einblenden"
+          >
+            <span class="filter-toggle-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M10 4h10v2H10V4zm-6 0h3v2H4V4zm0 7h10v2H4v-2zm13 0h3v2h-3v-2zM8 18h12v2H8v-2zm-4 0h1v2H4v-2z"/>
+                <circle cx="8.5" cy="5" r="2.5"/>
+                <circle cx="16.5" cy="12" r="2.5"/>
+                <circle cx="5.5" cy="19" r="2.5"/>
+              </svg>
+            </span>
+            <span class="filter-toggle-label">Filter</span>
+          </button>
+        </div>
+
+        <div id="filtersPanel" class="filters-panel" hidden>
+          <div class="filters-grid">
+            <label class="field">
+              <span>Typ</span>
+              <select id="mediaFilter">
+                <option value="all">Alles</option>
+                <option value="movie">Filme</option>
+                <option value="tv">Serien</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Genre</span>
+              <select id="genreFilter">
+                <option value="">Alle Genres</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Jahr</span>
+              <select id="yearFilter">
+                <option value="">Alle Jahre</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Mindestbewertung</span>
+              <select id="ratingFilter">
+                <option value="0">Alle</option>
+                <option value="5">Ab 5.0</option>
+                <option value="6">Ab 6.0</option>
+                <option value="7">Ab 7.0</option>
+                <option value="8">Ab 8.0</option>
+                <option value="9">Ab 9.0</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Sortierung</span>
+              <select id="sortFilter">
+                <option value="top_rated" selected>Top Rated</option>
+                <option value="trending">Trending</option>
+                <option value="popular">Popular</option>
+                <option value="release_desc">Neueste</option>
+                <option value="title_asc">Titel A-Z</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Serienstatus</span>
+              <select id="seriesStatusFilter">
+                <option value="">Alle</option>
+                <option value="0">Laufend</option>
+                <option value="3">Abgeschlossen</option>
+              </select>
+            </label>
+          </div>
+        </div>
+      </section>
+    </div>
+    <nav>
+      <a href="index.html#discover">Entdecken</a>
+      <a href="#resultsSection">Ergebnisse</a>
+      <a href="ranking.html">Mein Ranking</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="resultsSection" class="content-section">
+      <div class="section-head compact">
+        <div>
+          <p class="section-kicker">Suche</p>
+          <h2>Ergebnisse</h2>
+        </div>
+      </div>
+      <section id="resultsGrid" class="results"></section>
+    </section>
+  </main>
+
+  <div id="infoModal" class="modal" hidden>
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-content">
+      <button id="modalClose" class="modal-close" type="button">Schliessen</button>
+      <div class="modal-hero" id="modalHero">
+        <div class="modal-hero-overlay"></div>
+        <div class="modal-hero-content">
+          <img id="modalPoster" class="modal-poster" alt="Poster" />
+          <div class="modal-copy">
+            <p id="modalEyebrow" class="modal-eyebrow"></p>
+            <h2 id="modalTitle"></h2>
+            <div id="modalMeta" class="modal-meta"></div>
+            <p id="modalOverview" class="modal-overview"></p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-sections">
+        <section class="modal-panel">
+          <h3>Trailer</h3>
+          <div id="modalTrailer"></div>
+        </section>
+        <section class="modal-panel">
+          <h3>Bilder</h3>
+          <div id="modalGallery" class="modal-gallery"></div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script src="search-page.js"></script>
+</body>
+</html>

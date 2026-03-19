@@ -22,35 +22,25 @@
   </header>
 
   <main>
-    <section class="studio-section">
-      <div class="studio-banner">
-        <p class="hero-kicker">SteFlix Charts</p>
-        <h2 id="chartsHeroTitle">Die besten Filme bei SteFlix</h2>
-        <p id="chartsHeroCopy" class="section-copy">
-          Entdecke die aktuell staerksten Filme und Serien als eigene Top-Liste mit direktem Zugriff auf Trailer und Details.
-        </p>
-        <div class="quick-actions chart-switch">
-          <button id="showMoviesBtn" type="button">Top Filme</button>
-          <button id="showSeriesBtn" type="button">Top Serien</button>
-        </div>
-      </div>
-    </section>
-
     <section class="content-section">
       <div class="section-head compact">
         <div>
-          <p class="section-kicker">Charts</p>
-          <h2 id="chartsHeading">Top Filme</h2>
+          <p class="section-kicker">SteFlix Charts</p>
+          <h2 id="chartsHeroTitle">Die besten Filme bei SteFlix</h2>
         </div>
-        <p id="chartsDescription" class="section-copy">
+        <p id="chartsHeroCopy" class="section-copy">
           Die Liste zeigt die bestbewerteten Filme mit genug Stimmen, damit die Auswahl nicht zufaellig wirkt.
         </p>
       </div>
+      <div class="quick-actions chart-switch chart-switch-inline">
+        <button id="showMoviesBtn" type="button">Top Filme</button>
+        <button id="showSeriesBtn" type="button">Top Serien</button>
+      </div>
       <section id="chartsGrid" class="results top-chart-grid"></section>
       <div class="chart-pagination">
-        <button id="chartsPrevBtn" type="button">Zurueck</button>
-        <p id="chartsPageInfo" class="chart-page-info">Seite 1 / 5</p>
-        <button id="chartsNextBtn" type="button">Weiter</button>
+        <button id="chartsPrevBtn" class="chart-page-arrow" type="button" aria-label="Vorherige Seite">&lsaquo;</button>
+        <div id="chartsPageButtons" class="chart-page-buttons" aria-label="Seitenauswahl"></div>
+        <button id="chartsNextBtn" class="chart-page-arrow" type="button" aria-label="Naechste Seite">&rsaquo;</button>
       </div>
     </section>
   </main>

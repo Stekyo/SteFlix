@@ -7,14 +7,12 @@ const FALLBACK_POSTER =
 const logoLoopVideo = document.getElementById("logoLoopVideo");
 const chartsHeroTitle = document.getElementById("chartsHeroTitle");
 const chartsHeroCopy = document.getElementById("chartsHeroCopy");
-const chartsHeading = document.getElementById("chartsHeading");
-const chartsDescription = document.getElementById("chartsDescription");
 const chartsGrid = document.getElementById("chartsGrid");
 const showMoviesBtn = document.getElementById("showMoviesBtn");
 const showSeriesBtn = document.getElementById("showSeriesBtn");
 const chartsPrevBtn = document.getElementById("chartsPrevBtn");
 const chartsNextBtn = document.getElementById("chartsNextBtn");
-const chartsPageInfo = document.getElementById("chartsPageInfo");
+const chartsPageButtons = document.getElementById("chartsPageButtons");
 
 const modal = document.getElementById("infoModal");
 const modalHero = document.getElementById("modalHero");
@@ -106,16 +104,31 @@ function updateChartCopy() {
   const meta = chartMetaByType[currentType];
   chartsHeroTitle.textContent = meta.heroTitle;
   chartsHeroCopy.textContent = meta.heroCopy;
-  chartsHeading.textContent = meta.heading;
-  chartsDescription.textContent = meta.description;
   showMoviesBtn.classList.toggle("is-active", currentType === "movie");
   showSeriesBtn.classList.toggle("is-active", currentType === "tv");
 }
 
 function updatePagination() {
-  chartsPageInfo.textContent = `Seite ${currentPage} / ${totalPages} · bis zu ${totalPages * 20} Titel`;
   chartsPrevBtn.disabled = currentPage <= 1;
   chartsNextBtn.disabled = currentPage >= totalPages;
+  chartsPageButtons.innerHTML = Array.from({ length: totalPages }, (_, index) => {
+    const page = index + 1;
+    return `
+      <button
+        class="chart-page-number ${page === currentPage ? "is-active" : ""}"
+        type="button"
+        data-chart-page="${page}"
+        aria-label="Seite ${page}"
+        ${page === currentPage ? 'aria-current="page"' : ""}
+      >${page}</button>
+    `;
+  }).join("");
+
+  chartsPageButtons.querySelectorAll("[data-chart-page]").forEach((button) => {
+    button.addEventListener("click", () => {
+      setChartPage(Number(button.dataset.chartPage || 1));
+    });
+  });
 }
 
 function renderCharts(items) {
